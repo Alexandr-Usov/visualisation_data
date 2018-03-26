@@ -1,14 +1,13 @@
 """Строит простой график квадратов чисел от 0 до 10"""
 import matplotlib.pyplot as plt
+input_values = [1, 2, 3, 4, 5]
 
 
 def squares():
     """Рассчитывает квадраты чисел."""
-    index = -10
     square = []
-    while index <=10:
-        square.append(index * index)
-        index += 1
+    for i in input_values:
+        square.append(i * i)
     return square
 
 
@@ -23,6 +22,6 @@ def plt_settings():
     plt.tick_params(axis="both", labelsize=14)
 
 
-plt.plot(squares())
+plt.plot(input_values, squares(), linewidth=5)
 plt_settings()
 plt.show()
