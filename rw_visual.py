@@ -5,7 +5,7 @@ from random_walk import RandomWalk
 
 # Новые блуждания строятся до тех пор пока программа остаётся активной
 while True:
-    rw = RandomWalk(50000)
+    rw = RandomWalk(500000)
     rw.fill_walk()
 
     # Размер области просмотра
