@@ -7,7 +7,7 @@ die_2 = Die()
 
 # Моделирование серии бросков с сохранением результатов в списке
 results = []
-for roll_num in range(1000):
+for roll_num in range(50000):
     result = die_1.roll()+die_2.roll()
     results.append(result)
 
@@ -21,7 +21,7 @@ for value in range(2, max_result + 1):
 # Визуализация результатов.
 hist = pygal.Bar()
 hist.title = "Результаты броска одного шестигранного кубика 1000 раз."
-hist.x_labels = ['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
+hist.x_labels = list(range(2, max_result + 1))
 hist.x_title = "Результат"
 hist.y_title = "Частота выпадения"
 hist.add('D6', frequencies)
