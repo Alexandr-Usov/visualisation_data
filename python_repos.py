@@ -1,7 +1,7 @@
 """Строит список самых популярных Python проектов на GitHub, строит диаграмму
 и записывает её в svg файл"""
-import requests
 import pygal
+import requests
 from pygal.style import LightColorizedStyle as LCS, LightenStyle as LS
 
 # Создание вызова API и сохранение ответа.
@@ -22,16 +22,28 @@ for repo_dict in repo_dicts:
 
 # Построение визуализации.
 my_style = LS('#333366', base_style=LCS)
-chart = pygal.Bar(style=my_style, x_label_rotation=45, show_legend=False)
+
+# Объект настроек
+my_config = pygal.Config()
+my_config.x_label_rotation = 45
+my_config.show_legend = False
+my_config.title_font_size = 24
+my_config.label_font_size = 14
+my_config.major_label_font_size = 18
+my_config.truncate_label = 15
+my_config.show_y_guides = False
+my_config.width = 1000
+
+chart = pygal.Bar(my_config, style=my_style)
 chart.title='Most-Starred Python Projects on GitHub'
 chart.x_labels=names
 chart.add('', stars)
 chart.render_to_file('python_repos.svg')
 
 # Анализ первого репозитория.
-#repo_dict = repo_dicts[0]
-#print("\nSelected information about first repository:")
-#for repo_dict in repo_dicts:
+# repo_dict = repo_dicts[0]
+# print("\nSelected information about first repository:")
+# for repo_dict in repo_dicts:
 #    print('Name:', repo_dict['name'])
 #    print('Owner:', repo_dict['owner']['login'])
 #    print('Stars:', repo_dict['stargazers_count'])
